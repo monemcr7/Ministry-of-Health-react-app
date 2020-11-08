@@ -1,0 +1,931 @@
+//========================================//
+// Variables //
+//========================================//
+$main-color:                        #918A55 !default;
+$dark-color:                        #03140C !default;
+$second-color:                      #118755 !default;
+$light-color:                       #ffffff  !default;
+
+@mixin borderRadius ($r) {
+  border-radius: $r;
+  -webkit-border-radius: $r;
+  -moz-border-radius: $r;
+  -ms-border-radius: $r;
+  -o-border-radius: $r;
+}
+
+  @font-face {
+    font-family: 'HelveticaNeue';
+    src: url('./fonts/HelveticaNeue.eot');
+    src: local("☺"), url('./fonts/HelveticaNeue.woff') format("woff"), url('./fonts/HelveticaNeue.ttf') format("truetype"), url('./fonts/HelveticaNeue.svg') format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'HelveticaNeue-light';
+    src: url('./fonts/HelveticaNeue-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'HelveticaNeue-thin';
+    src: url('./fonts/HelveticaNeue-Thin.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  /* Let's get this party started */
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    @include borderRadius(8px)
+  }
+  
+  /* Handle */
+  
+  ::-webkit-scrollbar-thumb {
+    @include borderRadius(8px);
+    background-color: #777;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+  
+    &:window-inactive {
+      background-color: #777;
+    }
+  }
+  
+  a {
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+  }
+  
+  body {
+    color: $dark-color;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'HelveticaNeue-light';
+    font-size: 14px;
+    line-height: 1.42857143;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    position: relative;
+    font-weight: 400;
+    background-color: #EFEFEF;
+    background-image: url('./bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+  }
+  
+  main {
+    height: 100%;
+    width: 100%;
+  }
+  
+  /********* Start SideBar Style **********/
+  
+  .sidebar-col {
+    padding: 0;
+    background-color: $light-color;
+    min-height: 100vh;
+  
+    .sidebar-logo {
+      text-align: center;
+      padding: 30px 15px;
+  
+      img {
+        width: 60%;
+      }
+    }
+  
+    .sidebar-link {
+      ul {
+        margin: 0;
+      }
+  
+      li {
+        a {
+          padding: 15px 0 15px 25%;
+          color: $dark-color;
+          display: block;
+          font-size: 14px;
+  
+          i {
+            color: $main-color;
+            font-size: 16px;
+            padding-right: 5px;
+          }
+        }
+  
+        .active, a:hover {
+          background-color: $second-color;
+          color: $light-color;
+          text-decoration: none;
+        }
+  
+        .active i, a:hover i {
+          color: $light-color;
+        }
+      }
+    }
+  }
+  
+  /****** Start Content Style ******/
+  
+  .content-col {
+    padding-top: 30px;
+  
+    .bar-mobile {
+      position: absolute;
+      top: 5px;
+      color: #111;
+      font-size: 30px;
+      z-index: 5;
+      cursor: pointer;
+      display: none;
+    }
+  
+    .search-input {
+      .form-group {
+        margin: 0;
+        position: relative;
+        width: 70%;
+      }
+  
+      input {
+        width: 100%;
+        background: $light-color 0% 0% no-repeat padding-box;
+        opacity: 0.6;
+        border-radius: 10px;
+        @include borderRadius(10px);
+        border-color: transparent;
+        color: $dark-color;
+        font-size: 14px;
+        height: 44px;
+  
+        &:focus {
+          box-shadow: none;
+        }
+      }
+  
+      button {
+        position: absolute;
+        font-size: 14px;
+        right: 15px;
+        top: 13px;
+        background-color: transparent;
+        color: $dark-color;
+        border: 0;
+        padding: 0;
+        opacity: .4;
+  
+        &:hover, &:focus {
+          box-shadow: none;
+          outline: none;
+          color: $second-color;
+        }
+      }
+    }
+  }
+  
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: $dark-color !important;
+    font-size: 13px;
+  }
+  
+  ::-moz-placeholder {
+    color: $dark-color;
+    font-size: 13px;
+  }
+  
+  :-ms-input-placeholder {
+    color: $dark-color !important;
+    font-size: 13px;
+  }
+  
+  .create-ticket .btn {
+    background-color: $second-color;
+    color: $light-color;
+    border-color: $second-color;
+    height: 44px;
+    padding: 0 10px;
+    @include borderRadius(10px);
+    font-size: 16px;
+  
+    i {
+      font-size: 20px;
+      position: relative;
+      top: 2px;
+      padding-right: 4px;
+    }
+  }
+  
+  /***** Card Style ******/
+  
+  .card-ticket {
+    margin: 15px 0 0;
+    background-color: $light-color;
+    @include borderRadius(10px);
+    cursor: pointer;
+  
+    .col-lg-7 {
+      padding: 0;
+    }
+  
+    .ticket-num {
+      display: inline-block;
+      vertical-align: top;
+      width: 90px;
+      border-right: 1px solid #eee;
+      position: relative;
+      text-align: center;
+      padding: 0 0 15px;
+      height: 82px;
+  
+      h3 {
+        font-family: 'HelveticaNeue-thin';
+        font-size: 26px;
+        margin: 0;
+        line-height: 23px;
+      }
+  
+      span {
+        font-size: 12px;
+      }
+  
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 35px;
+      }
+    }
+  
+    .ticket-info {
+      display: inline-block;
+      vertical-align: top;
+      width: calc(100% - 100px);
+      height: 100%;
+      padding: 0 15px 15px;
+  
+      h2 {
+        font-size: 12px;
+        opacity: .7;
+        margin: 0 0 5px;
+      }
+  
+      p {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  
+    .ticket-details {
+      li {
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 12px;
+        opacity: .7;
+  
+        &:first-child {
+          padding-left: 0;
+        }
+  
+        i {
+          color: $main-color;
+        }
+      }
+  
+      padding: 0 0 15px;
+      height: 85px;
+  
+      ul {
+        margin: 0;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  
+    .card-message {
+      border-top: 1px solid #eee;
+      padding: 20px 15px;
+  
+      p {
+        font-size: 14px;
+      }
+  
+      .text-message {
+        font-size: 13px;
+      }
+    }
+  
+    .message-action {
+      img {
+        width: 25px;
+        display: inline-block;
+        padding-right: 5px;
+      }
+  
+      a, span {
+        font-size: 12px;
+        opacity: .7;
+        text-transform: capitalize;
+      }
+  
+      a {
+        text-decoration: underline;
+        color: $dark-color;
+      }
+    }
+  }
+  
+  /*** pagination ***/
+  
+  .pagination {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+  
+    .page-item {
+      padding: 0 0 0 15px;
+  
+      a {
+        padding: 0;
+        @include borderRadius(10px);
+        width: 36px;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        border: 0;
+        color: $dark-color;
+      }
+  
+      &:first-child {
+        padding: 0;
+      }
+  
+      &:last-child .page-link {
+        @include borderRadius(10px);
+        color: $main-color;
+      }
+  
+      &:first-child .page-link {
+        @include borderRadius(10px);
+        color: $main-color;
+        text-align: right;
+      }
+  
+      &:last-child .page-link {
+        text-align: left;
+      }
+  
+      a {
+        &:hover, &:focus, &.active {
+          background-color: $main-color;
+          color: $light-color !important;
+          box-shadow: none;
+        }
+      }
+  
+      &:last-child .page-link img, &:first-child .page-link img {
+        width: 25px;
+      }
+  
+      &:last-child .page-link:focus, &:first-child .page-link:focus, &:last-child .page-link:hover, &:first-child .page-link:hover {
+        background-color: $light-color;
+      }
+    }
+  }
+  
+  /***** Start widget *****/
+  
+  .widget {
+    margin-top: 30px;
+    padding-left: 0;
+  
+    .widget-col {
+      height: 90%;
+      @include borderRadius(10px);
+      background-color: #ebebe8;
+      padding: 0 10px;
+  
+      .widget-user {
+        text-align: center;
+        padding: 20px 0;
+        position: relative;
+  
+        img {
+          width: 60px;
+          height: 60px;
+          @include borderRadius(50%);
+        }
+  
+        h2 {
+          font-size: 16px;
+          margin: 10px 0 0;
+          line-height: 17px;
+        }
+  
+        p {
+          font-size: 13px;
+          opacity: .8;
+          margin: 0;
+        }
+  
+        a {
+          right: 15px;
+          top: 10px;
+          color: $main-color;
+          position: absolute;
+  
+          &:hover {
+            text-decoration: none;
+            color: $second-color;
+          }
+        }
+      }
+    }
+  
+    .notifications {
+      @include borderRadius(10px);
+      padding: 10px;
+      background-color: #e3e2da;
+      margin-top: 30px;
+  
+      .notification-text {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 28px);
+  
+        i {
+          font-size: 14px;
+          color: $main-color;
+        }
+      }
+  
+      .notification-num {
+        width: 28px;
+        height: 26px;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #10D171;
+        font-size: 12px;
+        text-align: center;
+        line-height: 26px;
+        @include borderRadius(6px);
+      }
+    }
+  
+    .notification-row {
+      margin-top: 15px;
+    background-color: $light-color;
+    @include borderRadius(10px);
+    padding: 15px 10px;
+    p {
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+  
+      .time {
+        display: block;
+        font-size: 12px;
+        color: rgba(3, 20, 12, 0.6);
+  
+        span {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          display: inline-block;
+          background-color: #10D171;
+          margin-right: 5px;
+          @include borderRadius(50%);
+        }
+      }
+    }
+  }
+  
+  /*** Start Modal Style ****/
+  
+  .modal-dialog {
+    max-width: 860px;
+  }
+  
+  .modal-header {
+    border-bottom: 0;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: $dark-color;
+    font-family: 'HelveticaNeue-light';
+  }
+  
+  .modal-body {
+    background: #F8F8F8;
+  }
+  
+  .create-form {
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+  
+      .label-form {
+        position: absolute;
+        top: -10px;
+        background-color: #F8F8F8;
+        z-index: 66;
+        left: 13px;
+        color: $main-color;
+        font-size: 14px;
+      }
+  
+      .form-control {
+        height: 50px;
+        border: 1px solid $main-color;
+        @include borderRadius(4px);
+        background-color: transparent;
+        color: $dark-color;
+  
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  
+    .react-datepicker-wrapper {
+      display: block;
+      width: 100%;
+    }
+  
+    .custom-control-input {
+      &:not(:disabled):active ~ .custom-control-label::before, &:checked ~ .custom-control-label::before {
+        border-color: $main-color;
+        background-color: $main-color;
+      }
+    }
+  
+    .custom-file-input:focus ~ .custom-file-label {
+      box-shadow: none;
+    }
+  
+    .custom-control-input:focus {
+      ~ .custom-control-label::before {
+        box-shadow: none;
+      }
+  
+      &:not(:checked) ~ .custom-control-label::before {
+        border-color: $main-color;
+      }
+    }
+  
+    .custom-control-label {
+      color: $dark-color;
+      font-size: 14px;
+    }
+  
+    .form-group textarea.form-control {
+      height: 150px;
+      resize: none;
+      overflow: hidden;
+      overflow-y: auto;
+      padding: 15px 13px;
+    }
+  
+    .custom-file-label::after {
+      display: none;
+    }
+  
+    .group-text-area {
+      height: 150px;
+      margin: 0;
+    }
+  
+    label.custom-file-label {
+      height: 100%;
+      border: 1px solid $main-color;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 15%;
+    }
+  
+    .custom-file-label.custom.custom-file {
+      height: 100%;
+      background-color: transparent;
+    }
+  
+    .group-text-area::after {
+      position: absolute;
+      content: "";
+      background-image: url("./ic_file_upload_24px@2x.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 30px;
+      height: 34px;
+      left: 47%;
+      top: 27%;
+    }
+  
+    .custom-file-input:focus ~ .custom-file-label {
+      border-color: $main-color;
+    }
+  }
+  
+  .modal-footer {
+    border-top: 0;
+  
+    .btn {
+      width: 130px;
+      height: 48px;
+      padding: 0;
+      font-size: 16px;
+    }
+  
+    .btn-primary {
+      background-color: $second-color !important;
+      border-color: $second-color !important;
+      color: $light-color;
+      box-shadow: none !important;
+    }
+  
+    primary:not(:disabled):not(.disabled):active:focus {
+      background-color: $main-color !important;
+      border-color: $main-color !important;
+    }
+  
+    .btn-primary {
+      &:focus, &:hover {
+        background-color: $main-color !important;
+        border-color: $main-color !important;
+      }
+    }
+  
+    .close-btn {
+      background-color: transparent !important;
+      border-color: $main-color !important;
+      color: $main-color;
+      box-shadow: none !important;
+    }
+  
+    primary:not(:disabled):not(.disabled):active:focus {
+      background-color: $main-color !important;
+      border-color: $main-color !important;
+      color: #fff;
+    }
+  
+    .close-btn {
+      &:focus, &:hover {
+        background-color: $main-color !important;
+        border-color: $main-color !important;
+        color: #fff;
+      }
+    }
+  }
+  
+  /**** Start Media Query ****/
+  /*** Start Tablet Screen ***/
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .sidebar-col {
+      flex: 0 0 13.666667%;
+      max-width: 13.666667%;
+    }
+  
+    .content-col {
+      flex: 0 0 68.666667%;
+      max-width: 68.666667%;
+    }
+  
+    .widget {
+      flex: 0 0 17.666667%;
+      max-width: 17.666667%;
+    }
+  
+    .sidebar-col .sidebar-link li a {
+      padding-left: 10%;
+      font-size: 12px;
+  
+      i {
+        font-size: 13px;
+        padding-right: 2px;
+      }
+    }
+  
+    .widget {
+      .widget-col .widget-user h2 {
+        font-size: 13px;
+      }
+  
+      .notification-row p, .widget-col .widget-user p {
+        font-size: 11px;
+      }
+    }
+  
+    .card-ticket {
+      .ticket-num h3 {
+        font-size: 22px;
+      }
+  
+      .ticket-details li {
+        font-size: 10px;
+      }
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .sidebar-col {
+      flex: 0 0 80px;
+      max-width: 80px;
+  
+      .sidebar-logo {
+        img {
+          width: 70%;
+        }
+  
+        padding: 15px 0;
+      }
+  
+      .sidebar-link li {
+        a {
+          padding: 15px 5px;
+          text-align: center;
+        }
+  
+        span {
+          display: block;
+          font-size: 11px;
+        }
+      }
+    }
+  
+    .card-ticket {
+      .ticket-details {
+        padding: 13px 15px;
+        height: auto;
+        border-top: 1px solid #eee;
+      }
+  
+      .ticket-num h3 {
+        font-size: 22px;
+      }
+    }
+  
+    .content-col .search-input .form-group {
+      width: 100%;
+    }
+  
+    .widget {
+      margin-top: 30px;
+      padding-left: 0;
+      flex: 0 0 calc(33.333333% - 80px);
+      max-width: fit-content;
+    }
+  
+    .modal-dialog {
+      max-width: 95%;
+    }
+  }
+  
+  /****** Start Mobile Screen ******/
+  @media (max-width: 767px) {
+    .sidebar-col {
+      position: fixed;
+      z-index: 55;
+      max-width: auto;
+      min-width: 100px;
+      display: none;
+    }
+    .content-col {
+      padding-top: 50px;
+  }
+    .create-ticket {
+      margin-top: 10px;
+    }
+  
+    .widget {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+      padding: 0 15px;
+    }
+  
+    .pagination {
+      justify-content: center;
+      padding: 0;
+    }
+  
+    .create-form .form-group {
+      margin-bottom: 25px;
+      min-height: auto;
+      display: block;
+    }
+  
+    .widget .notifications {
+      margin-top: 0;
+    }
+  
+    .card-ticket {
+      .ticket-num {
+        width: 70px;
+        height: 70px;
+  
+        h3 {
+          font-size: 16px;
+        }
+  
+        img {
+          width: 27px;
+        }
+  
+        span {
+          font-size: 10px;
+        }
+      }
+  
+      .ticket-info {
+        width: calc(100% - 70px);
+        padding: 0 5px 15px;
+  
+        h2 {
+          font-size: 11px;
+        }
+  
+        p {
+          font-size: 13px;
+        }
+      }
+  
+      .ticket-details li {
+        font-size: 10px;
+      }
+    }
+  
+    .message-action .text-right {
+      text-align: left !important;
+      padding-top: 5px;
+    }
+  
+    .pagination .page-item {
+      padding: 0 0 0 10px;
+    }
+  
+    .modal-footer .btn {
+      width: 46.5%;
+      height: 38px;
+      font-size: 14px;
+    }
+  
+    .create-form .form-group .form-control {
+      font-size: 14px;
+    }
+  
+    .widget .widget-col {
+      height: auto;
+    }
+  
+    .clicked .sidebar-col, .content-col .bar-mobile {
+      display: block;
+    }
+  
+    .clicked .content-col .bar-mobile {
+      z-index: 557;
+      left: 110px;
+      position: fixed;
+  
+      .fa-bars:before {
+        content: "\f00d";
+      }
+    }
+  }
